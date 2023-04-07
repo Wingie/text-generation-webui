@@ -14,3 +14,5 @@ sentencepiece
 pyyaml
 tqdm
 git+https://github.com/huggingface/transformers@9eae4aa57650c1dbe1becd4e0979f6ad1e572ac0
+langchain
+python-dotenv

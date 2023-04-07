@@ -167,7 +167,7 @@ def generate_chat_html(history, name1, name2, reset_cache=False):
     return output
 
 
-def generate_agent_html(history, name1, name2, character):
+def generate_agent_html(history, name1, name2, character, reset_cache=False):
     output = f'<style>{cai_css}</style><div class="chat" id="chat">'
     suffix = f"?{time.time()}" if reset_cache else ''
     img_bot = f'<img src="file/cache/pfp_character.png{suffix}">' if Path("cache/pfp_character.png").exists() else ''

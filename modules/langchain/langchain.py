@@ -72,8 +72,7 @@ agent = ConversationalAgent(llm_chain=llm_chain, allowed_tools=tool_names)
 agent_chain = AgentExecutor.from_agent_and_tools(
     agent=agent, tools=tools, memory=memory, verbose=True)
 
-#agent_chain = initialize_agent(tools, llm, agent="conversational-react-description", verbose=True, memory=memory)
-
+agent_chain = initialize_agent(tools, llm, agent="conversational-react-description", verbose=True, memory=memory)
 
 def generate(message):
     response = agent_chain.run(f"{message}")

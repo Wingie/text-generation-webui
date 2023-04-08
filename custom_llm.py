@@ -45,6 +45,7 @@ from langchain.llms.base import LLM
 from llama_index import SimpleDirectoryReader, LangchainEmbedding, GPTListIndex, PromptHelper
 from llama_index import LLMPredictor, ServiceContext
 from transformers import pipeline
+from langchain.embeddings.huggingface import HuggingFaceEmbeddings
 from typing import Optional, List, Mapping, Any
 
 
@@ -83,8 +84,8 @@ class CustomLLM(LLM):
 
 # define our LLM
 llm_predictor = LLMPredictor(llm=CustomLLM())
-
-service_context = ServiceContext.from_defaults(llm_predictor=llm_predictor, prompt_helper=prompt_helper)
+embed_model = LangchainEmbedding(HuggingFaceEmbeddings())
+service_context = ServiceContext.from_defaults(llm_predictor=llm_predictor, prompt_helper=prompt_helper, embed_model=embed_model)
 
 # Load the your data
 documents = SimpleDirectoryReader('./training/datasets/').load_data()

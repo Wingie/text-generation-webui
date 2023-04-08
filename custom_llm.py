@@ -63,7 +63,7 @@ class CustomLLM(LLM):
 
     def _call(self, prompt: str, stop: Optional[List[str]] = None) -> str:
         payload = json.dumps([prompt, params])
-        
+        prompt_length = len(prompt)
         response = requests.post(f"http://{server}:7860/run/textgen", json={
             "data": [
                 payload
@@ -91,5 +91,5 @@ documents = SimpleDirectoryReader('./training/datasets/').load_data()
 index = GPTListIndex.from_documents(documents, service_context=service_context)
 
 # Query and print response
-response = new_index.query("what do you make of these documents?")
+response = index.query("what is a spaceship?")
 print(response)

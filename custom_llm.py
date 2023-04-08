@@ -42,9 +42,8 @@ params = {
 
 import torch
 from langchain.llms.base import LLM
-from llama_index import SimpleDirectoryReader, LangchainEmbedding, GPTListIndex, PromptHelper
+from llama_index import SimpleDirectoryReader, LangchainEmbedding, GPTSimpleVectorIndex, PromptHelper
 from llama_index import LLMPredictor, ServiceContext
-from transformers import pipeline
 from langchain.embeddings.huggingface import HuggingFaceEmbeddings
 from typing import Optional, List, Mapping, Any
 
@@ -89,7 +88,7 @@ service_context = ServiceContext.from_defaults(llm_predictor=llm_predictor, prom
 
 # Load the your data
 documents = SimpleDirectoryReader('./training/datasets/').load_data()
-index = GPTListIndex.from_documents(documents, service_context=service_context)
+index = GPTSimpleVectorIndex.from_documents(documents, service_context=service_context)
 
 # Query and print response
 response = index.query("what is a spaceship?")

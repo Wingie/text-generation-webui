@@ -87,7 +87,7 @@ llm_predictor = LLMPredictor(llm=CustomLLM())
 service_context = ServiceContext.from_defaults(llm_predictor=llm_predictor, prompt_helper=prompt_helper)
 
 # Load the your data
-documents = SimpleDirectoryReader('./training').load_data()
+documents = SimpleDirectoryReader('./training/datasets/').load_data()
 index = GPTListIndex.from_documents(documents, service_context=service_context)
 
 # Query and print response
